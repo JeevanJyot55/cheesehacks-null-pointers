@@ -32,22 +32,23 @@ Investment Advisor is a web-based tool designed for hackathons. It helps users a
    ```bash
    git clone <repository_url>
    cd <repository_folder>
-   Backend Setup:
 
 2. **Backend Setup:**
    ```bash
-   cd backend
+   cd cheesybackend
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    pip3 install Flask flask-cors yfinance pandas tqdm
+
 3. **Frontend Setup:**
    ```bash
-   cd frontend
+   cd cheesyfrontend
    npm install
-   Running the Application
+
 4. **Start the Backend:**
    ```bash
    python3 stockSelectorFunction.py
+
 5. **Start the Frontend:**
    ```bash
    npm run dev
