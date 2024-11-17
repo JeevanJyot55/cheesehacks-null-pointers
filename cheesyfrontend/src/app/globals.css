@@ -1,0 +1,359 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 62.5%; /* 1rem = 10px for easier calculation */
+
+  --color-background: #ffffff; /* White background */
+  --color-primary: #000000; /* Black primary */
+  --color-primary-light: #333333; /* Light gray for secondary elements */
+  --color-primary-dark: #111111; /* Darker black for borders, etc. */
+  --color-secundary: #000000; /* Same as primary for a more consistent theme */
+  --color-secundary-dark: #333333;
+  --color-title-in-primary: #FFFFFF; /* White for title text */
+  --color-text-in-primary: #f0f0f0; /* Light gray text */
+  --color-text-title: #000000; /* Black title text */
+  --color-text-complement: #888888; /* Mid gray */
+  --color-text-base: #333333; /* Text color for readability */
+  --color-line-in-white: #e0e0e0; /* Light gray line */
+  --color-input-background: #f8f8f8; /* Off-white input background */
+  --color-button-text: #FFFFFF; /* White text on buttons */
+  --color-box-base: #f8f8f8; /* Off-white card background */
+  --color-box-footer: #f0f0f0; /* Slightly darker footer */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-background);
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-base);
+}
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+input,
+button,
+textarea {
+  font: 500 1.8rem Poppins;
+}
+
+/* General Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  width: 90vw;
+  padding: 1rem;
+}
+
+/* Card Component */
+.card {
+  background: var(--color-box-base);
+  border: 1px solid var(--color-line-in-white);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 2rem;
+  border-bottom: 1px solid var(--color-line-in-white);
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-title);
+}
+
+.card-description {
+  font-size: 1.4rem;
+  color: var(--color-text-complement);
+  margin-top: 0.5rem;
+}
+
+.card-content {
+  padding: 2rem;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-primary-dark);
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  border: 1px solid var(--color-line-in-white);
+  border-radius: 0.5rem;
+  background-color: var(--color-input-background);
+  color: var(--color-primary-dark);
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Slider */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slider {
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--color-primary-light);
+  border-radius: 0.25rem;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Button */
+button {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-button-text);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #9ca3af; /* Gray 400 */
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #2563eb; /* Blue 600 */
+}
+
+/* Recommended Stocks */
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-line-in-white);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li span {
+  font-size: 1.4rem;
+  color: var(--color-primary-dark);
+  font-weight: 500;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1rem;
+}
+
+/* Slider Shake Animation */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Slider Styling */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.slider {
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--color-primary-light);
+  border-radius: 0.25rem;
+  outline: none;
+  transition: background 0.3s;
+}
+
+/* Thumb Styling */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* For Firefox */
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Red Color and Shake on High Risk */
+.slider.shaking::-webkit-slider-thumb,
+.slider.shaking::-moz-range-thumb {
+  animation: shake 0.5s ease-in-out;
+  background: red !important;  /* Turn red */
+}
+
+/* If the slider value is high (risk > 75), apply the shake and red effect */
+.slider.high-risk::-webkit-slider-thumb,
+.slider.high-risk::-moz-range-thumb {
+  background: red !important; /* Change to red */
+}
+
+/* For input and button hover/active states */
+button:hover {
+  background-color: #2563eb; /* Blue 600 */
+}
+
+
+
+/* Larger Font Sizes for Laptop Screens */
+@media (min-width: 1024px) {
+  :root {
+    font-size: 65%; /* 1rem = 10.4px for better readability on larger screens */
+  }
+
+  body {
+    font-size: 2rem; /* Larger font size */
+  }
+
+  .card-title {
+    font-size: 2.4rem; /* Larger title */
+  }
+
+  .card-description {
+    font-size: 1.6rem; /* Larger description text */
+  }
+
+  label {
+    font-size: 1.4rem; /* Larger label text */
+  }
+
+  input[type="number"] {
+    font-size: 1.6rem; /* Larger input text */
+  }
+
+  button {
+    font-size: 1.8rem; /* Larger button text */
+  }
+
+  .slider {
+    height: 8px; /* Make the slider thicker */
+  }
+
+  .slider::-webkit-slider-thumb {
+    width: 24px; /* Make the slider thumb larger */
+    height: 24px;
+  }
+
+  .slider::-moz-range-thumb {
+    width: 24px; /* Make the slider thumb larger */
+    height: 24px;
+  }
+}
