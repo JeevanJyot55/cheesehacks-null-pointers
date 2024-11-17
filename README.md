@@ -1,5 +1,4 @@
-#OptiStocks- Where money meets strategy
-#cheesehacks-null-pointers
+## OptiStocks- Where money meets strategy
 
 ## Overview
 
