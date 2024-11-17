@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./car
 
 interface Stock {
   name: string;
+  sector: string;
   quantity: number;
 }
 
@@ -25,21 +26,32 @@ export default function InvestmentAdvisor() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch('http://your-api-endpoint.com/getStocks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ budget, sliderValue: risk }),
-      });
-      const data = await response.json();
-      setStocks(data);
+        const response = await fetch('http://127.0.0.1:5000/allocate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ budget, risk: risk[0] }),
+        });
+        const data = await response.json();
+        // Map backend response to the required frontend format
+    
+        const formattedStocks = data.map((item: any) => ({
+          name: item.Symbol,
+          sector: item.Sector,
+          quantity: item.Quantity,
+        }));
+        console.log(formattedStocks)
+
+      setStocks(formattedStocks);
+      
+      // Update state with received recommendations
     } catch (error) {
-      console.error('Error fetching stocks:', error);
+        console.log('Error fetching stock recommendations:', error);
     } finally {
-      setIsLoading(false);
+        setIsLoading(false);
     }
-  };
+};
 
   return (
     <div className="container mx-auto p-4">
@@ -104,8 +116,11 @@ export default function InvestmentAdvisor() {
           <CardContent>
             <ul className="space-y-2">
               {stocks.map((stock, index) => (
-                <li key={index} className="flex justify-between items-center border-b py-2">
+                <li
+                  key={index}
+                  className="flex justify-between items-center border-b py-2">
                   <span className="font-medium">{stock.name}</span>
+                  <span className="font-medium">{stock.sector}</span>
                   <span>{stock.quantity} shares</span>
                 </li>
               ))}
