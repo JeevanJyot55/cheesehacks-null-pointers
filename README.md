@@ -51,3 +51,5 @@ Investment Advisor is a web-based tool designed for hackathons. It helps users a
 5. **Start the Frontend:**
    ```bash
    npm run dev
+
+Note: The python file and the frontend should be running at the same time.
